@@ -9,14 +9,14 @@ let app = express();
 
 
 // Analisa a aplicação da URL
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false, limit:'50mb'}));
 // Converte os dados que body-parser recebe em JSON
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 
 consign().include('routes').include('utils').into(app);
 
 // Escuta a os eventos do endereço que foi passado.
-app.listen(8080, '192.168.0.105', () => {
+app.listen(8080, '192.168.0.102', () => {
     console.log('Server Running');
 });
 
